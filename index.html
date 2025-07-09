@@ -26,79 +26,251 @@
         
         body {
             font-family: "RIDIBatang", serif;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            min-height: 100vh;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: "GamtanRoadBatangBoldTTF", sans-serif;
         }
+
+        .book-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header-gradient {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            position: relative;
+        }
+
+        .header-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(229, 231, 235, 0.1) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(229, 231, 235, 0.1) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(229, 231, 235, 0.1) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(229, 231, 235, 0.1) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+            opacity: 0.3;
+        }
+
+        .book-cover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-cover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            color: #2d3748;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #6b7280, #9ca3af);
+            border-radius: 2px;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.1), rgba(156, 163, 175, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(107, 114, 128, 0.3);
+        }
+
+        .link-card a {
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .link-card:hover a {
+            color: #1a202c;
+        }
+
+        .emoji-icon {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+            display: inline-block;
+        }
+
+        .author-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .publisher-link {
+            color: #000000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .publisher-link:hover {
+            color: #374151;
+            border-bottom-color: #374151;
+        }
+
+        .footer-modern {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: #a0aec0;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .text-content {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .book-container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            .link-card {
+                padding: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
-    <div class="max-w-4xl mx-auto bg-white shadow-lg min-h-screen">
+    <div class="max-w-4xl mx-auto book-container min-h-screen">
         <!-- Header -->
-        <header class="bg-black text-white p-8 text-center">
+        <header class="header-gradient text-white p-8 text-center">
             <div class="mb-6">
-                <img src="images/r-visualization-book-cover-flat-small.jpg" alt="R을 활용한 데이터 시각화 책 표지" class="mx-auto rounded-lg shadow-md max-w-xs">
+                <img src="images/r-visualization-book-cover-flat-small.jpg" alt="R을 활용한 데이터 시각화 책 표지" class="mx-auto book-cover max-w-xs">
             </div>
             <h1 class="text-3xl md:text-4xl font-bold mb-4">R을 활용한 데이터 시각화</h1>
-            <div class="text-gray-300">
-                <p class="mb-2">저자: 유충현, 홍성학</p>
-                <p>출판: <a href="http://www.insightbook.co.kr" target="_blank" class="text-white hover:text-gray-300 underline">인사이트 출판사</a></p>
+            <div class="author-info">
+                <p class="mb-2 text-gray-700">저자: 유충현, 홍성학</p>
+                <p class="text-gray-700">출판: <a href="http://www.insightbook.co.kr" target="_blank" class="publisher-link">인사이트 출판사</a></p>
             </div>
         </header>
 
         <!-- Main Content -->
         <main class="p-8">
             <!-- 소개 섹션 -->
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold text-black mb-6 border-b-2 border-gray-300 pb-2">소개</h2>
-                <div class="space-y-4 text-gray-800 leading-relaxed">
+            <section class="section-card">
+                <h2 class="section-title">소개</h2>
+                <div class="text-content">
                     <p>책 "R을 활용한 데이터 시각화"의 예제 코드와 문제 해결 정보를 제공합니다.</p>
                 </div>
             </section>
 
             <!-- 출판 관련 문의 섹션 -->
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold text-black mb-6 border-b-2 border-gray-300 pb-2">출판 관련 문의</h2>
-                <div class="space-y-4 text-gray-800 leading-relaxed">
+            <section class="section-card">
+                <h2 class="section-title">출판 관련 문의</h2>
+                <div class="text-content">
                     <p>출판 관련 문의는 출판사로 연락해 주세요.</p>
-                    <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="link-card">
                         <a href="http://www.insightbook.co.kr/book/programming-insight/r%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94" 
-                           target="_blank" 
-                           class="text-black hover:text-gray-600 underline font-medium">
-                            인사이트 출판사의 "R을 활용한 데이터 시각화" 페이지로 이동합니다.
+                           target="_blank">
+                            <span class="emoji-icon">📚</span>인사이트 출판사의 "R을 활용한 데이터 시각화" 페이지로 이동합니다.
                         </a>
                     </div>
                 </div>
             </section>
 
             <!-- 예제 코드 섹션 -->
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold text-black mb-6 border-b-2 border-gray-300 pb-2">예제 코드</h2>
-                <div class="space-y-4 text-gray-800 leading-relaxed">
+            <section class="section-card">
+                <h2 class="section-title">예제 코드</h2>
+                <div class="text-content">
                     <p>예제 코드의 레파지토리에서 책에 있는 예제를 모두 받을 수 있습니다.</p>
                     <p>최신 예제 코드는 저희 GitHub 레포지토리에 있습니다.</p>
                     
                     <div class="grid md:grid-cols-1 gap-4 mt-6">
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <a href="https://github.com/r-visualization/r-visualization-book" 
-                               target="_blank" 
-                               class="text-black hover:text-gray-600 underline font-medium block mb-2">
-                                📁 예제 코드 레파지토리
+                        <div class="link-card">
+                            <a href="https://github.com/r-visualization/r-visualization-book" target="_blank">
+                                <span class="emoji-icon">📁</span>예제 코드 레파지토리
                             </a>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <a href="https://github.com/r-visualization/r-visualization-book/archive/master.zip" 
-                               target="_blank" 
-                               class="text-black hover:text-gray-600 underline font-medium block mb-2">
-                                📦 예제 코드 레파지토리 압축 파일
+                        <div class="link-card">
+                            <a href="https://github.com/r-visualization/r-visualization-book/archive/master.zip" target="_blank">
+                                <span class="emoji-icon">📦</span>예제 코드 레파지토리 압축 파일
                             </a>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <a href="https://www.dropbox.com/s/80f4fq4qz5fktfz/R_visualization.zip" 
-                               target="_blank" 
-                               class="text-black hover:text-gray-600 underline font-medium block mb-2">
-                                💾 최초 원본 압축파일 다운로드
+                        <div class="link-card">
+                            <a href="https://www.dropbox.com/s/80f4fq4qz5fktfz/R_visualization.zip" target="_blank">
+                                <span class="emoji-icon">💾</span>책에 있는 링크의 압축파일 다운로드
                             </a>
                         </div>
                     </div>
@@ -106,15 +278,13 @@
             </section>
 
             <!-- 문의 및 문제 해결 섹션 -->
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold text-black mb-6 border-b-2 border-gray-300 pb-2">문의 및 문제 해결을 위한 방법</h2>
-                <div class="space-y-4 text-gray-800 leading-relaxed">
+            <section class="section-card">
+                <h2 class="section-title">문의 및 문제 해결</h2>
+                <div class="text-content">
                     <p>예제 코드를 실행하면서 발생하는 오류나 문제, 도움에 대한 것은 예제 코드가 올려진 레파지토리의 이슈 페이지를 이용해 주세요.</p>
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <a href="https://github.com/r-visualization/r-visualization-book/issues" 
-                           target="_blank" 
-                           class="text-black hover:text-gray-600 underline font-medium">
-                            🔧 예제 코드 및 질문 이슈로 가기
+                    <div class="link-card">
+                        <a href="https://github.com/r-visualization/r-visualization-book/issues" target="_blank">
+                            <span class="emoji-icon">🔧</span>예제 코드 및 질문 이슈로 가기
                         </a>
                     </div>
                 </div>
@@ -122,7 +292,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-gray-100 text-center py-6 text-gray-600 text-sm border-t">
+        <footer class="footer-modern">
             <p>Hosted on GitHub</p>
         </footer>
     </div>
